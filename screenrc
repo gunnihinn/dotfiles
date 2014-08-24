@@ -1,0 +1,23 @@
+# Created on 07.12.2007 by Gunni
+# config file for screen
+
+# so screen and vim play nicely
+term screen-256color
+maptimeout 5
+
+# Turn of start message and annoying-as-fuck bell
+startup_message 	off
+vbell			    off
+
+# Replace ctrl-A by ctrl-Z
+escape 			    ^Zz
+
+# Get windowlist with C-z l
+bind 'l' 		windowlist -b
+
+# Make editors and man pages go away when closed
+altscreen on
+
+# Hardstatus line
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
