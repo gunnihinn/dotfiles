@@ -7,7 +7,6 @@ install them on different machines.
 todo
 ----
 
-* Make an install script.
 * Think about how to handle vim packages.
-* Are symlinks better than appending ``source $FILE`` statements to files like
-``.xinitrc``?
+* Add other scripts.
+* Extend install script. Add options and tests.

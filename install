@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## dotfiles install script
+
+# The script doesn't overwrite existing config options. It prefers
+# symlinking to the dotfiles dir, but if a file already exists then it
+# appends a 'source' command to it.
+
+# Defaults
+source_dir=$(pwd)
+target_dir=$HOME
+
+# Functions
+install_dotfile () {
+    local source_file="$1"
+    local target_file="$target_dir/.$source_file"
+
+    # If the file doesn't exist, make a symlink
+    if [[ ! -e "$target_file" ]]; then
+        echo "$target_file doesn't exist, symlinking to $source_file"
+        echo ln -s "$file" "$target_dir/.$file"
+    # If the target is a symlink and equals our file; do nothing
+    elif [[ -L "$target_file" ]] && diff "$source_file" "$target_file"; then
+        echo "$target_file is already symlinked to $source_file"
+    # Else source the new file at the end of the old one 
+    else
+        echo "$target_file exist, sourcing $source_file at its end"
+        echo "" >> "$target_file" && echo "source $source_file" >> "$target_file"
+    fi
+}
+
+# Main logic
+to_install="bashrc screenrc Xdefaults Xresources"
+
+for file in $to_install; do
+    install_dotfile "$file"
+done
