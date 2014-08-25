@@ -25,7 +25,7 @@ install_dotfile () {
         echo "$target_file is already symlinked to $source_file"
     # Else source the new file at the end of the old one 
     else
-        echo "$target_file exist, appending \"source $source_file\" to its end"
+        echo "$target_file exist, appending \"source $source_file\" to the end of it"
         echo -e "\n\nsource $source_dir/$source_file" >> "$target_file"
     fi
 }
