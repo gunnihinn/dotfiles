@@ -1,5 +1,4 @@
 """ .vimrc
-""" edited by gthm on 22 Aug 2014
 
 execute pathogen#infect()
 filetype plugin on
