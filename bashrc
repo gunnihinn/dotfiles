@@ -25,7 +25,7 @@ export SGML_CATALOG_FILES="/home/gunnar/sgml/catalog"
 alias xsl='xsltproc --stringparam pmode "issue" --param intro_exists 0 --param dois 1 --param rss_exists 0 --param at_berkeley 1 --param linkb 0 --param pdfp_exists 1 --param pdfs_exists 1 --param linkf 0 --param linkx 0 /home/gunnar/msp/mspbin/Xpublish/xsl/paper.xsl /home/gunnar/msp/metadata.xml > /home/gunnar/msp/index.html' 
 
 # variable declarations
-export PATH="$PATH:/home/gunnar/.bin:/usr/local/bin:/usr/local/texlive/2013/bin/x86_64-linux:/home/gunnar/Dropbox/dotfiles/.bin:/home/gunnar/Dropbox/msp/scripts:/usr/bin/site_perl"
+export PATH="$PATH:/home/gunnar/.bin:/usr/local/bin:/usr/local/texlive/2014/bin/x86_64-linux:/home/gunnar/Dropbox/dotfiles/.bin:/home/gunnar/Dropbox/msp/scripts:/usr/bin/site_perl"
 export MANPATH="$MANPATH:/usr/local/texlive/2012/texmf/doc/man"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2012/texmf/doc/info"
 export EDITOR="vim"

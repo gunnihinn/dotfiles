@@ -5,7 +5,7 @@ filetype plugin on
 filetype indent on
 
 "" Possibly interferes with pathogen
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 " reload .vimrc when it's changed
 augroup myvimrc
@@ -35,7 +35,7 @@ set softtabstop=4
 set expandtab           " Use spaces, not tabs
 
 set linebreak
-set tw=76               " lines are this many chars
+set tw=72               " lines are this many chars
 set scrolloff=3
 
 set hlsearch            " highlight searchterms
