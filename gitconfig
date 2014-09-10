@@ -1,0 +1,19 @@
+[user]
+	name = Gunnar Þór Magnússon
+	email = gunnarthormagnusson@gmail.com
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log
+    be = checkout -b edits
+    me = merge edits
+    pe = push origin edits
+[color]
+	ui = true
+[core]
+	excludesfile = /home/gunnar/.gitignore_global
+[merge]
+	tool = vimdiff

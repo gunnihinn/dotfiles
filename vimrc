@@ -4,15 +4,18 @@ execute pathogen#infect()
 filetype plugin on
 filetype indent on
 
-"" Possibly interferes with pathogen
-"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-
 " reload .vimrc when it's changed
 augroup myvimrc
     au!
     au BufWritePost .vimrc source ~/.vimrc
 augroup END
 
+"" Statusline
+set laststatus=2
+set statusline=%F%m%r%h%w\ 
+set statusline+=%{fugitive#statusline()}\    
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ [line\ %l\/%L]          
 
 "" General options
 
@@ -23,8 +26,17 @@ set grepprg=grep\ -nH\ $*
 
 set nocompatible        " use Vim defaults
 syntax enable           " syntax highlighting
-set background=dark
+set background=light
 colorscheme solarized
+
+" For gnome-terminal
+set t_Co=16
+
+if has("gui_running")
+    set guifont=Inconsolata\-g\ 16
+    set background=light
+    set lines=36
+endif
 
 set showmode
 set showcmd
@@ -48,11 +60,16 @@ set confirm
 set history=50
 set undolevels=1000
 
+" easier moving of code blocks
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
 
 "" Shortcut keys
 
 " Preserve formatting of text pasted into Vim
 set pastetoggle=<F2>
+set clipboard=unnamed
+
 " clear search by backspace
 nnoremap <BS> :noh<return>
 " enable spell check
@@ -73,3 +90,4 @@ imap OF <End>
 source $HOME/dotfiles/vim/latex.vim
 source $HOME/dotfiles/vim/perl.vim
 source $HOME/dotfiles/vim/msp.vim
+source $HOME/dotfiles/vim/python.vim

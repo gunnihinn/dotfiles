@@ -1,0 +1,2 @@
+SYSRESOURCES=/etc/X11/Xresourcse
+USRESOURCES=$HOME/.Xresources

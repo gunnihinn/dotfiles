@@ -1,0 +1,52 @@
+# automatically generated tex files
+*.log
+*.dvi
+*.bbl
+*.out
+*.synctex.gz
+*.aux
+*.blg
+*.sav
+*.fls
+*.fdb_latexmk
+
+# generally no point in version-controlling these?
+*.pdf
+*.eps
+*.ps
+*~
+*.*.swp
+
+# MSP specific
+!Orig.pdf
+!figs/*.pdf
+!figs/*.eps
+mail
+metadata
+auto/
+orig/
+pjm/
+RCS/
+main.notes
+pub.txt
+
+# Packages
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

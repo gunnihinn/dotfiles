@@ -8,7 +8,7 @@
 
 # Defaults
 source_dir=$(pwd)
-target_dir=$HOME
+target_dir=$(echo $HOME)
 to_install="bashrc screenrc Xdefaults Xresources vimrc"
 
 # Functions
