@@ -9,4 +9,10 @@ function! Mattdent()
     set foldlevel=0
     let perl_fold=1 
     let perl_fold_blocks=1
+    " Tidy selected lines (or entire file) with \t:
+    nnoremap <silent> <LEADER>t :%!perltidy -q<Enter>
+    vnoremap <silent> <LEADER>t :!perltidy -q<Enter>
+    " comment/uncomment blocks of code (in vmode)
+    vmap <LEADER>c :s/^/#/gi<Enter>
+    vmap <LEADER>C :s/^#//gi<Enter>
 endfunction

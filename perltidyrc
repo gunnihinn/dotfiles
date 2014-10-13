@@ -1,0 +1,15 @@
+## Almost --perl-best-practices, except for () {} [] spacing
+-l=78   # lines are this many chars
+-i=4    # indent by this many spaces
+-ci=4   # continue indenting broken lines by this many spaces
+-st     # standard output
+-se     # standard error output
+-vt=2   # never break line after vertical token
+-cti=0  # no indent for closing token
+-pt=2   # no space around ()
+-bt=2   # no space around {}
+-sbt=2  # no space around []
+-bbt=1  # some space around block {}
+-nsfs   # no space for ; within loops
+-nolq   # no outdent long lines
+-wbb="% + - * / x != == >= <= =~ !~ < > | & = **= += *= &= <<= &&= -= /= |= >>= ||= //= .= %= ^= x="

@@ -8,6 +8,8 @@
     co = checkout
     df = diff
     lg = log
+    ls = log --oneline
+    df = diff --name-only
     be = checkout -b edits
     me = merge edits
     pe = push origin edits

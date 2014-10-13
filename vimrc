@@ -10,6 +10,9 @@ augroup myvimrc
     au BufWritePost .vimrc source ~/.vimrc
 augroup END
 
+" git commit messages are spellchecked and wrapped at 72 lines
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 "" Statusline
 set laststatus=2
 set statusline=%F%m%r%h%w\ 
