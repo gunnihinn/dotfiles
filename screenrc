@@ -2,7 +2,7 @@
 # config file for screen
 
 # so screen and vim play nicely
-term screen-256color
+#term screen-256color
 maptimeout 5
 
 # Turn of start message and annoying-as-fuck bell

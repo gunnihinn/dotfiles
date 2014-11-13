@@ -50,3 +50,6 @@ pub.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Sphinx build
+docs/build

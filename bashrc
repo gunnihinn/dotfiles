@@ -32,6 +32,14 @@ PROMPT_COMMAND="history -a"
 # Ignore duplicates, ls, bg, bf and exit in bash history
 export HISTIGNORE="&:ls:[bf]g:exit"
 
+rcstogit () {
+    if [[ $# > 0 ]]; then
+        rcs-fast-export.rb "$@" | git fast-import && git reset
+    else
+        rcs-fast-export.rb . | git fast-import && git reset
+    fi
+}
+
 textopdf () {
 	j=`echo $1 | sed 's/.tex//'`
 	latex $j.tex; dvips $j.dvi; ps2epsi $j.ps; epstopdf $j.epsi
@@ -63,4 +71,34 @@ warclone () {
     git clone$branch gunnar@barquentine.msp.warwick.ac.uk:/local/journals/$2/$vol-$year/src/$1
 } 
 
-source /usr/local/bin/virtualenvwrapper.sh
+getp() {
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: getp agt 123456-Name [bool for nextissue]"
+        exit
+    fi
+    if [[ $# -eq 3 ]]; then
+        rsync -avz gamma:msp/$1/src/work/nextissue/$2 .
+    else
+        rsync -avz gamma:msp/$1/src/work/$2 .
+    fi
+}
+
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+putp() {
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: putp agt 123456-Name [bool for nextissue]"
+        exit
+    fi
+    if [[ $# -eq 3 ]]; then
+        rsync -avz $2 gamma:msp/$1/src/work/nextissue
+    else
+        rsync -avz $2 gamma:msp/$1/src/work
+    fi
+}
+
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi

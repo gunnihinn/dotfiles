@@ -1,6 +1,69 @@
 """ .vimrc
 
-execute pathogen#infect()
+""" Vim plugins
+" set the runtime path to include Vundle and initialize
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Plugins on Github 
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+
+"" Programming languages
+" Python
+Plugin 'python-rope/ropevim'
+" Test runner: 
+"   https://github.com/JarrodCTaylor/vim-python-test-runner
+Plugin 'JarrodCTaylor/vim-python-test-runner'
+
+Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" Syntax checking and snippets
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+
+" This allows you to select some text using Vim's visual mode and then
+" hit * and # to search for it elsewhere in the file.  For example, hit
+" V, select a strange sequence of characters like '$! $!', and hit star.
+" You'll find all other runs of '$! $!' in the file.
+"
+" If you hit <leader>* ('\*' unless you changed the mapleader), vim will
+" recursively vimgrep for the word under the cursor or the visual
+" selection.
+"
+" Vim's default behavior is to just extend the visual selection to the
+" next word that matches the word under the cursor. Doesn't seem very
+" useful.  https://github.com/nelstrom/vim-visual-star-search
+Plugin 'nelstrom/vim-visual-star-search'
+
+" Make CTRL-A / CTRL-X work on dates like 2000-03-26
+" https://github.com/tpope/vim-speeddating
+Plugin 'tpope/vim-speeddating'
+
+" NERDTree is a tree explorer plugin for vim.
+" Open with <leader>n
+" https://github.com/scrooloose/nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" Syntax highlighting
+Plugin 'tpope/vim-git'
+
+" Surround mode; see
+"   https://github.com/tpope/vim-surround
+Plugin 'tpope/vim-surround'
+
+call vundle#end()
+
 filetype plugin on
 filetype indent on
 
@@ -8,7 +71,11 @@ filetype indent on
 augroup myvimrc
     au!
     au BufWritePost .vimrc source ~/.vimrc
+    au BufWritePost dotfiles/vimrc source ~/.vimrc
 augroup END
+
+" reload unchanged buffers when file changed outside vim
+set autoread
 
 " git commit messages are spellchecked and wrapped at 72 lines
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -73,6 +140,9 @@ vnoremap > >gv  " better indentation
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+" NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
 " clear search by backspace
 nnoremap <BS> :noh<return>
 " enable spell check
@@ -94,3 +164,19 @@ source $HOME/dotfiles/vim/latex.vim
 source $HOME/dotfiles/vim/perl.vim
 source $HOME/dotfiles/vim/msp.vim
 source $HOME/dotfiles/vim/python.vim
+
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<c-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    let s:word_count = str2nr(split(v:statusmsg)[11])
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count 
+endfunction
+
+set statusline+=\ [%{WordCount()}\ words]

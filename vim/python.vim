@@ -5,6 +5,12 @@ function! Python()
     set foldmethod=indent
     set foldlevel=99
 
+    nnoremap<Leader>nf :NosetestFile<CR>
+    nnoremap<Leader>nc :NosetestClass<CR>
+    nnoremap<Leader>nm :NosetestMethod<CR>
+    nnoremap<Leader>nb :NosetestBaseMethod<CR>
+    nnoremap<Leader>rr :RerunLastTests<CR>
+
     " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path

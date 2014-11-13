@@ -1,15 +1,16 @@
 [user]
 	name = Gunnar Þór Magnússon
-	email = gunnarthormagnusson@gmail.com
+	email = gunnar@gthm.is
 [alias]
     st = status
     ci = commit
     br = branch
     co = checkout
-    df = diff
-    lg = log
     ls = log --oneline
     df = diff --name-only
+    caa = commit -a --amend -C HEAD
+    df = diff
+    lg = log
     be = checkout -b edits
     me = merge edits
     pe = push origin edits
