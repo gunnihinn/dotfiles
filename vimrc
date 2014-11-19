@@ -94,9 +94,11 @@ set statusline+=\ [line\ %l\/%L]
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
-set nocompatible        " use Vim defaults
-syntax enable           " syntax highlighting
-set background=light
+set nocompatible                " use Vim defaults
+set backspace=indent,eol,start  " backspace/del remove newlines
+syntax enable                   " syntax highlighting
+
+set background=dark
 colorscheme solarized
 
 " For gnome-terminal
