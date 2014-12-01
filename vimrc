@@ -164,6 +164,7 @@ source $HOME/dotfiles/vim/latex.vim
 source $HOME/dotfiles/vim/perl.vim
 source $HOME/dotfiles/vim/msp.vim
 source $HOME/dotfiles/vim/python.vim
+source $HOME/dotfiles/vim/go.vim
 
 function! WordCount()
   let s:old_status = v:statusmsg
