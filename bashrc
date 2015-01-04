@@ -25,6 +25,11 @@ export MANPATH="$MANPATH:/usr/local/texlive/2012/texmf/doc/man"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2012/texmf/doc/info"
 export EDITOR="vim"
 
+# Run "dircolors dir_colors" to get these codes
+# See man dircolors or man dir_colors for explanations
+LS_COLORS='no=0:fi=0:di=34:ln=35:or=35;47:mi=33;47:pi=36:so=32:bd=34;46:cd=34;47:ex=31:'
+export LS_COLORS
+
 # Add commands to history after completion
 shopt -s histappend
 PROMPT_COMMAND="history -a"
