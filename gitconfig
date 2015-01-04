@@ -9,7 +9,6 @@
     ls = log --oneline
     df = diff --name-only
     caa = commit -a --amend -C HEAD
-    df = diff
     lg = log
     be = checkout -b edits
     me = merge edits
@@ -20,3 +19,5 @@
 	excludesfile = /home/gunnar/.gitignore_global
 [merge]
 	tool = vimdiff
+[push]
+	default = simple

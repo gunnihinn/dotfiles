@@ -49,28 +49,6 @@ mg () {
     grep "\\\\$1[^A-Za-z]" main.tex
 }
 
-warclone () {
-    if [ $# -ne 2 ] && [ $# -ne 3 ]; then
-        echo "Usage: warclone 123456-Name (a)gt (branch)"
-        return 1
-    fi
-    year="2014"
-    if [ "$2" == "agt" ]; then
-        vol=14
-    elif [ "$2" == "gt" ]; then
-        vol=18
-    else
-        echo "Second argument must be agt or gt"   
-        return 2
-    fi
-    branch=""
-    if [ $# -eq 3 ]; then
-        branch=" -b $3"
-    fi
-
-    git clone$branch gunnar@barquentine.msp.warwick.ac.uk:/local/journals/$2/$vol-$year/src/$1
-} 
-
 getp() {
     if [[ $# -lt 2 ]]; then
         echo "Usage: getp agt 123456-Name [bool for nextissue]"

@@ -25,6 +25,7 @@ Plugin 'JarrodCTaylor/vim-python-test-runner'
 Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+"Plugin 'lervag/vim-latex'
 
 " Syntax checking and snippets
 Plugin 'scrooloose/syntastic'
@@ -140,11 +141,18 @@ vnoremap > >gv  " better indentation
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+" C-c kills buffer in window w/o closing window
+nnoremap <C-c> :bp\|bd #<CR>
+
 " NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
 " clear search by backspace
 nnoremap <BS> :noh<return>
+" search results appear in middle of the screen
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
 " enable spell check
 map <F4> :setlocal spell! spelllang=en_us<cr>
 " search from here to end
