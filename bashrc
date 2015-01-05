@@ -66,10 +66,6 @@ getp() {
     fi
 }
 
-if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 putp() {
     if [[ $# -lt 2 ]]; then
         echo "Usage: putp agt 123456-Name [bool for nextissue]"
