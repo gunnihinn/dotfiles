@@ -17,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 
 "" Programming languages
 " Python
-Plugin 'python-rope/ropevim'
+"Plugin 'python-rope/ropevim'
 " Test runner: 
 "   https://github.com/JarrodCTaylor/vim-python-test-runner
 Plugin 'JarrodCTaylor/vim-python-test-runner'
@@ -97,16 +97,17 @@ set grepprg=grep\ -nH\ $*
 
 set nocompatible        " use Vim defaults
 syntax enable           " syntax highlighting
-set background=light
+set background=dark
 colorscheme solarized
 
 " For gnome-terminal
 set t_Co=16
 
 if has("gui_running")
-    set guifont=Inconsolata\-g\ 16
-    set background=light
-    set lines=36
+    set guifont=Source\ Code\ Pro\ Medium\ 17
+    set columns=80
+    " only show right scroll bar
+    set guioptions=r
 endif
 
 set showmode
@@ -188,4 +189,4 @@ function! WordCount()
   return s:word_count 
 endfunction
 
-set statusline+=\ [%{WordCount()}\ words]
+"set statusline+=\ [%{WordCount()}\ words]

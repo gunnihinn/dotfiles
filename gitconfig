@@ -6,7 +6,9 @@
     ci = commit
     br = branch
     co = checkout
-    ls = log --oneline
+    ls = log --oneline --decorate
+    la = log --oneline --graph --all --decorate
+    lb = log --oneline --graph --decorate
     df = diff --name-only
     caa = commit -a --amend -C HEAD
     lg = log

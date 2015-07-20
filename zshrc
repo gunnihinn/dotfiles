@@ -19,15 +19,25 @@ alias tmux="tmux -2"
 alias scp='noglob scp'
 alias rsync='noglob rsync'
 alias rake='noglob rake'
+alias soff='xset s off'
+alias bigscreen='xrandr --output VGA-0 --mode 1680x1050'
+#alias bigscreen='xrandr --output HDMI-0 --mode 1680x1050'
+
+# Wifi
+alias office='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/mexico_enamora.conf && sudo dhcpcd wlp6s0'
+alias nando='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/nando.conf && sudo dhcpcd wlp6s0'
+alias sanpancho='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/sanpancho.conf && sudo dhcpcd wlp6s0'
 
 # For backwards/forward search in tex
 alias vim='vim --servername VIM'
 
 alias tunnel='ssh -D 9999 -C gunnar@gamma.msp.berkeley.edu'
 
-export GOPATH=$HOME/Devel/go
-export GOBIN=$HOME/Devel/go/bin
-export PATH=$PATH:$HOME/Dropbox/dotfiles/.bin:$GOPATH/bin
+export GOPATH="$HOME/devel/go"
+export GOBIN="$HOME/devel/go/bin"
+export GOROOT="$HOME/downloads/go"
+export PATH="$PATH:$GOPATH/bin:$HOME/work/bin:$HOME/bin:$HOME/.gem/ruby/2.2.0/bin"
+export MSPBINROOT="$HOME/work/devel/prodkit"
 
 # Run "dircolors ~/dotfiles/dir_colors" to get these codes
 # See man dircolors or man dir_colors for explanations
