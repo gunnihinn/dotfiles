@@ -26,10 +26,12 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "Plugin 'lervag/vim-latex'
+"Plugin 'parkr/vim-jekyll'
 
 " Syntax checking and snippets
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 
@@ -168,25 +170,20 @@ imap OH <Home>
 imap OF <End>
 
 
+autocmd FileType c call Cdent()
+
+function! Cdent()
+    set foldmethod=indent
+    set foldlevel=99
+    " Tidy selected lines (or entire file) with \t:
+    nnoremap <silent> <LEADER>t :%!indent -linux<Enter>
+    vnoremap <silent> <LEADER>t :!indent -linux<Enter>
+endfunction
+
+
 "" Options specific to files or languages
 source $HOME/dotfiles/vim/latex.vim
 source $HOME/dotfiles/vim/perl.vim
 source $HOME/dotfiles/vim/msp.vim
 source $HOME/dotfiles/vim/python.vim
 source $HOME/dotfiles/vim/go.vim
-
-function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<c-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count 
-endfunction
-
-"set statusline+=\ [%{WordCount()}\ words]

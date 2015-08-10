@@ -1,6 +1,6 @@
 ! -- urxvt --
 
-URxvt.font:             xft:Source\ Code\ Pro:pixelsize=23:style=Medium:antialias=true:hinting:true
+URxvt.font:             xft:Source\ Code\ Pro:pixelsize=24:style=Medium:antialias=true:hinting:true
 !URxvt.perl-ext:         default,matcher
 URxvt.perl-ext-common:  default,matcher,tabbedex
 URxvt.tabbed.autohide:  false

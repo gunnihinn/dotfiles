@@ -20,13 +20,14 @@ alias scp='noglob scp'
 alias rsync='noglob rsync'
 alias rake='noglob rake'
 alias soff='xset s off'
-alias bigscreen='xrandr --output VGA-0 --mode 1680x1050'
-#alias bigscreen='xrandr --output HDMI-0 --mode 1680x1050'
+alias office_monitor='xrandr --output VGA-0 --mode 1680x1050'
+alias bigscreen='xrandr --output HDMI-0 --mode 1680x1050'
+alias shut='sudo shutdown -h now'
 
 # Wifi
-alias office='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/mexico_enamora.conf && sudo dhcpcd wlp6s0'
-alias nando='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/nando.conf && sudo dhcpcd wlp6s0'
-alias sanpancho='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/sanpancho.conf && sudo dhcpcd wlp6s0'
+alias wifi-office='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/mexico_enamora.conf && sudo dhcpcd wlp6s0'
+alias wifi-phone='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/phone.conf && sudo dhcpcd wlp6s0'
+alias wifi-temp='sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/temp.conf && sudo dhcpcd wlp6s0'
 
 # For backwards/forward search in tex
 alias vim='vim --servername VIM'
@@ -44,7 +45,6 @@ export MSPBINROOT="$HOME/work/devel/prodkit"
 LS_COLORS='no=0:fi=0:di=34:ln=35:or=35;47:mi=33;47:pi=36:so=32:bd=34;46:cd=34;47:ex=31:'
 export LS_COLORS
 
-
 rcstogit () {
     if [[ $# > 0 ]]; then
         rcs-fast-export.rb "$@" | git fast-import && git reset
@@ -53,30 +53,24 @@ rcstogit () {
     fi
 }
 
-getp() {
-    if [[ $# -lt 2 ]]; then
-        echo "Usage: getp agt 123456-Name [bool for nextissue]"
-        exit
-    fi
-    if [[ $# -eq 3 ]]; then
-        rsync -avz gamma:msp/$1/src/work/nextissue/$2 .
-    else
-        rsync -avz gamma:msp/$1/src/work/$2 .
-    fi
-}
-
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-putp() {
-    if [[ $# -lt 2 ]]; then
-        echo "Usage: putp agt 123456-Name [bool for nextissue]"
-        exit
+#
+# setup ssh-agent
+#
+
+if ! pgrep ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval $(<~/.ssh-agent-thing)
+fi
+for privkey in $HOME/.ssh/*_rsa; do
+    ssh-add $privkey 2>/tmp/ssh-agent.err
+    if [[ "$?" -ne 0 ]]; then
+        # Colors defined in /usr/local/etc/zshrc
+        echo "${RED}ssh-add error${RESET}: $(cat /tmp/ssh-agent.err)"
     fi
-    if [[ $# -eq 3 ]]; then
-        rsync -avz $2 gamma:msp/$1/src/work/nextissue
-    else
-        rsync -avz $2 gamma:msp/$1/src/work
-    fi
-}
+done
