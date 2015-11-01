@@ -1,9 +1,11 @@
 ! -- urxvt --
 
-!URxvt.font:             xft:Inconsolata\\-g:style=g:pixelsize=20:antialias=true:hinting=true
-URxvt.font:             xft:Source\ Code\ Pro:pixelsize=23:style=Medium:antialias=true:hinting:true
-URxvt.perl-ext:         default,matcher
-URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.font:             xft:Source\ Code\ Pro:pixelsize=27:style=Medium:antialias=true:hinting:true
+URxvt.perl-ext:         default,matcher,tabbed,clipboard,url-select,keyboard-select
+URxvt.tabbed.new-button: true
+URxvt.tabbed.autohide: true
+URxvt.tabbed.reopen-on-close: yes
+URxvt.urlLauncher:      /usr/local/bin/firefox
 URxvt.matcher.button:   1 
 URxvt.scrollBar_right:  1
 URxvt.geometry:         80x24
@@ -34,24 +36,24 @@ URxvt.keysym.Control-Right:     \033[1;5C
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 ! Light theme
-#define S_base03        #fdf6e3
-#define S_base02        #eee8d5
-#define S_base01        #93a1a1
-#define S_base00        #839496
-#define S_base0         #657b83
-#define S_base1         #586e75
-#define S_base2         #073642
-#define S_base3         #002b36
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #073642
+!#define S_base3         #002b36
 
 ! Dark theme
-!#define S_base03        #002b36
-!#define S_base02        #073642
-!#define S_base01        #586e75
-!#define S_base00        #657b83
-!#define S_base0         #839496
-!#define S_base1         #93a1a1
-!#define S_base2         #eee8d5
-!#define S_base3         #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
 ! Common colors
 #define S_yellow        #b58900

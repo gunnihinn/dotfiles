@@ -17,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 
 "" Programming languages
 " Python
-Plugin 'python-rope/ropevim'
+"Plugin 'python-rope/ropevim'
 " Test runner: 
 "   https://github.com/JarrodCTaylor/vim-python-test-runner
 Plugin 'JarrodCTaylor/vim-python-test-runner'
@@ -30,8 +30,11 @@ Plugin 'plasticboy/vim-markdown'
 " Syntax checking and snippets
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'rdnetto/YCM-Generator'
+"Plugin 'rhysd/vim-clang-format'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " This allows you to select some text using Vim's visual mode and then
 " hit * and # to search for it elsewhere in the file.  For example, hit
@@ -82,11 +85,12 @@ set autoread
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "" Statusline
+"set ruler
 set laststatus=2
 set statusline=%F%m%r%h%w\ 
 set statusline+=%{fugitive#statusline()}\    
 set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ [line\ %l\/%L]          
+set statusline+=\ %c,\ %l\/%L
 
 "" General options
 
@@ -97,16 +101,16 @@ set grepprg=grep\ -nH\ $*
 
 set nocompatible        " use Vim defaults
 syntax enable           " syntax highlighting
-set background=light
+set background=dark
 colorscheme solarized
 
 " For gnome-terminal
 set t_Co=16
 
 if has("gui_running")
-    set guifont=Inconsolata\-g\ 16
+    set guifont=Source\ Code\ Pro\ 18
     set background=light
-    set lines=36
+    "set lines=36
 endif
 
 set showmode
@@ -150,9 +154,9 @@ map <C-n> :NERDTreeToggle<CR>
 " clear search by backspace
 nnoremap <BS> :noh<return>
 " search results appear in middle of the screen
-:nnoremap n nzz
-:nnoremap N Nzz
-:nnoremap * *zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
 " enable spell check
 map <F4> :setlocal spell! spelllang=en_us<cr>
 " search from here to end
@@ -166,6 +170,25 @@ map OF <End>
 imap OH <Home>
 imap OF <End>
 
+" Fugitive
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Gblame<CR>
+
+set makeprg=/usr/bin/make
+
+" C formatting
+nnoremap <C-K> :%!gindent<CR>
+
+" insert current time
+nnoremap <leader>; "=strftime("%H:%M")<CR>P
+inoremap <leader>; <C-R>=strftime("%H:%M")<CR>
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<Esc>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" Options specific to files or languages
 source $HOME/dotfiles/vim/latex.vim
@@ -173,19 +196,3 @@ source $HOME/dotfiles/vim/perl.vim
 source $HOME/dotfiles/vim/msp.vim
 source $HOME/dotfiles/vim/python.vim
 source $HOME/dotfiles/vim/go.vim
-
-function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<c-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count 
-endfunction
-
-set statusline+=\ [%{WordCount()}\ words]
