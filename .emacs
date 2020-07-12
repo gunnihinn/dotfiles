@@ -1,4 +1,9 @@
+;; see https://nixos.org/nixos/manual/index.html#module-services-emacs
+
 (require 'package)
+;; optional. makes unpure package unavailable
+(setq package-archives nil)
+(setq package-enable-at-startup nil)
 (package-initialize)
 
 (require 'notmuch)

@@ -21,7 +21,7 @@ setopt NO_HUP
 bindkey -e
 
 alias grep='grep --color=auto'
-alias config='$HOME/.nix-profile/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias config='/etc/profiles/per-user/gmagnusson/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 export GOPATH="$HOME/.go"
 
@@ -53,7 +53,5 @@ zstyle :compinstall filename '/home/gmagnusson/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-. $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 eval "$(direnv hook zsh)"

@@ -2,7 +2,7 @@ IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993
 User gunnar@magnusson.io
-PassCmd "/home/gmagnusson/.nix-profile/bin/gpg -q --for-your-eyes-only --no-tty -d ~/.mail/fastmail-password.gpg"
+PassCmd "/etc/profiles/per-user/gmagnusson/bin/gpg -q --for-your-eyes-only --no-tty -d ~/.mail/fastmail-password.gpg"
 SSLType IMAPS
 # CertificateFile /usr/local/share/certs/ca-root-nss.crt
 
