@@ -47,6 +47,10 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+(require 'helm-config)
+(require 'helm-projectile)
+(helm-projectile-on)
+
 (use-package projectile
   :commands projectile-mode
   :bind-keymap* (("C-c p" . projectile-command-map)

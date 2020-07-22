@@ -23,6 +23,10 @@ bindkey -e
 alias grep='grep --color=auto'
 alias config='/etc/profiles/per-user/gmagnusson/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -t'
+alias e='emacsclient -c'
+
 export GOPATH="$HOME/.go"
 
 PATH="$HOME/bin:$PATH"
@@ -54,4 +58,4 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-eval "$(direnv hook zsh)"
+type direnv > /dev/null && eval "$(direnv hook zsh)"
