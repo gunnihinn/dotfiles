@@ -23,8 +23,10 @@ bindkey -e
 alias grep='grep --color=auto'
 alias config='/etc/profiles/per-user/$(whoami)/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-export EDITOR='emacsclient -t'
-export VISUAL='emacsclient -t'
+EDITOR="${EDITOR:-emacsclient -t}"
+VISUAL="${VISUAL:$EDITOR}"
+export EDITOR
+export VISUAL
 alias e='emacsclient -c'
 
 export GOPATH="$HOME/.go"
