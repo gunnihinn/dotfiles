@@ -21,7 +21,7 @@ setopt NO_HUP
 bindkey -e
 
 alias grep='grep --color=auto'
-alias config='/etc/profiles/per-user/gmagnusson/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias config='/etc/profiles/per-user/$(whoami)/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 export EDITOR='emacsclient -t'
 export VISUAL='emacsclient -t'
