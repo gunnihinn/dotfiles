@@ -13,9 +13,9 @@
 (setq mail-user-agent 'message-user-agent)
 (setq mail-specify-envelope-from t)
 (setq sendmail-program "msmtp"
-	  mail-specify-envelope-from t
-	  mail-envelope-from 'header
-	  message-sendmail-envelope-from 'header)
+      mail-specify-envelope-from t
+      mail-envelope-from 'header
+      message-sendmail-envelope-from 'header)
 
 (require 'use-package)
 
@@ -23,6 +23,7 @@
 (load-theme 'solarized-dark t)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'format-all-mode)
 
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code."
@@ -38,8 +39,6 @@
   (setq graphviz-dot-indent-width 4))
 
 (use-package company-graphviz-dot)
-
-(add-hook 'before-save-hook 'gofmt-before-save)
 
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (setq visual-fill-column-center-text t)
@@ -57,9 +56,9 @@
                  ("s-p" . projectile-command-map))
   :bind (("C-c C-f" . projectile-find-file))
   :preface
-  ;(autoload 'projectile-project-vcs "projectile")
-  ;(autoload 'projectile-project-root "projectile")
-  ;(autoload 'easy-menu-define "easymenu" "" nil 'macro)
+					;(autoload 'projectile-project-vcs "projectile")
+					;(autoload 'projectile-project-root "projectile")
+					;(autoload 'easy-menu-define "easymenu" "" nil 'macro)
   :demand
   :config
   (projectile-mode))
