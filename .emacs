@@ -46,6 +46,8 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+(exec-path-from-shell-initialize)
+
 (require 'helm-config)
 (require 'helm-projectile)
 (helm-projectile-on)
@@ -62,6 +64,9 @@
   :demand
   :config
   (projectile-mode))
+
+(use-package direnv
+  :config (direnv-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

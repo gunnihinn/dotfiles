@@ -22,19 +22,8 @@ bindkey -e
 
 alias grep='grep --color=auto'
 alias config='/etc/profiles/per-user/$(whoami)/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
-EDITOR="${EDITOR:-emacsclient -t}"
-VISUAL="${VISUAL:$EDITOR}"
-export EDITOR
-export VISUAL
+alias clip='xclip -selection clipboard'
 alias e='emacsclient -c'
-
-export GOPATH="$HOME/.go"
-
-PATH="$HOME/bin:$PATH"
-PATH="$GOPATH/bin:$PATH"
-export PATH
-
 alias ls='ls --color=auto -F --group-directories-first'
 alias ll='ls -al'
 
