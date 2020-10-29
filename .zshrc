@@ -26,6 +26,7 @@ alias clip='xclip -selection clipboard'
 alias e='emacsclient -c'
 alias ls='ls --color=auto -F --group-directories-first'
 alias ll='ls -al'
+alias second_monitor='xrandr --output eDP-1 --below HDMI-1'
 
 LS_COLORS='no=0:fi=0:di=34:ln=35:or=35;47:mi=33;47:pi=36:so=32:bd=34;46:cd=34;47:ex=31:'
 export LS_COLORS
