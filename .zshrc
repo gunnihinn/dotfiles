@@ -43,6 +43,14 @@ function cd() {
     ls
 }
 
+function nix-use() {
+    nix-shell --packages "$@" --run zsh
+}
+
+function nix-find() {
+    nix-env -qaP ".*$@."
+}
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/gmagnusson/.zshrc'
 
