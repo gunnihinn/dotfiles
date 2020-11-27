@@ -1,0 +1,163 @@
+servers = (
+  {
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "6697";
+    use_tls = "yes";
+    tls_cert = "~/.irssi/irssi.pem";
+    tls_verify = "yes";
+    autoconnect = "yes";
+  },
+  { chatnet = "test"; address = "127.0.0.1"; port = "5000"; }
+);
+
+chatnets = {
+  Freenode = {
+    nick = "gthm";
+    user_name = "gthm";
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "4";
+    max_whois = "1";
+  };
+};
+
+channels = (
+  { name = "#lobsters"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "##crustaceans"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "##math"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "##topology"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#avar"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#nixos"; chatnet = "Freenode"; autojoin = "yes"; }
+);
+
+aliases = { };
+
+statusbar = {
+
+  items = {
+
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    time = "{sb $Z}";
+    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+
+    prompt = "{prompt $[.15]itemname}";
+    prompt_empty = "{prompt $winname}";
+
+    topic = " $topic";
+    topic_empty = " Irssi v$J - http://www.irssi.org";
+
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
+  };
+
+  default = {
+
+    window = {
+
+      disabled = "no";
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "active";
+
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    window_inact = {
+
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    prompt = {
+
+      type = "root";
+      placement = "bottom";
+      position = "100";
+      visible = "always";
+
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        input = { priority = "10"; };
+      };
+    };
+
+    topic = {
+
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+settings = {
+  core = {
+    real_name = "Gunnar Þór Magnússon";
+    user_name = "gthm";
+    nick = "gthm";
+  };
+  "fe-text" = { actlist_sort = "refnum"; scroll_page_count = "/1"; };
+  "fe-common/core" = {
+    autolog = "yes";
+    autolog_level = "ALL -CRAP -CLIENTCRAP -CTCPS";
+    autolog_path = "~/.irssi/logs/$tag/$0/%Y-%m-%d.log";
+  };
+  "perl/core/scripts" = {
+    noticeable_nicks = "~\\[bot\\]$,~Bot_*$,~bot$,~^[^0-9]+-[0-9][0-9]+_?$,~^\\w+[0-9]+\\w+-[0-9]+_?$,~^provision,root,deploy,log,~^jenkins,nagmetoo,~^package_?$,~^MonBot,alertapi,deadparrot,~^DeadParrot,~^deadparrot,gitlab,matterbridge";
+  };
+};
+ignores = (
+  { level = "JOINS PARTS QUITS NICKS"; },
+  { mask = "rda_man"; level = "ALL"; },
+  { mask = "spacefaygo"; level = "ALL"; },
+  { mask = "hughbord"; level = "ALL"; },
+  { mask = "dualSpace"; level = "ALL"; },
+  { mask = "hellothere_"; level = "ALL"; },
+  { mask = "milesrout"; level = "ALL"; },
+  { mask = "p0a"; level = "ALL"; },
+  { mask = "Nalt2"; level = "ALL"; },
+  { mask = "OnlineDater"; level = "ALL"; },
+  { mask = "qi"; level = "ALL"; },
+  { mask = "librehash"; level = "ALL"; }
+);
+logs = { };
